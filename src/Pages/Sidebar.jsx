@@ -8,6 +8,7 @@ import Card from '../Components/Card';
 import { SignUp } from '../Components/SignUp';
 import { SignIn } from '../Components/SignIn';
 import { BlogPage } from '../Components/BlogPage';
+import Input from '../Components/Input';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -20,6 +21,7 @@ function Sidebar() {
         { menuName: 'Signup', route: '/signup' },
         { menuName: 'Signin', route: '/signin' },
         { menuName: 'Blog Page', route: '/blog-page' },
+        { menuName: 'Input', route: '/input' },
     ]
 
     const navigateToComponent = (data) => {
@@ -44,12 +46,14 @@ function Sidebar() {
             {/* COMPONENT VIEW SECTION */}
             <div className="p-4 sm:ml-64">
                 <Routes>
+                    <Route path='/' element={<Card />} />
                     <Route path='/button' element={<Button />}></Route>
                     <Route path='/avatar' element={<Avatar />}></Route>
                     <Route path='/card' element={<Card />}></Route>
                     <Route path='/signup' element={<SignUp />}></Route>
                     <Route path='/signin' element={<SignIn />}></Route>
                     <Route path='/blog-page' element={<BlogPage />}></Route>
+                    <Route path='/input' element={<Input />}></Route>
                 </Routes>
             </div>
             {/* COMPONENT VIEW SECTION END */}
@@ -76,7 +80,7 @@ function Sidebar() {
                             {
                                 navList?.map((data, index) => (
                                     <span onClick={() => navigateToComponent(data)}
-                                        className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700"
+                                        className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 cursor-pointer"
                                         href="#"
                                     >
                                         <BarChart className="h-5 w-5" aria-hidden="true" />
