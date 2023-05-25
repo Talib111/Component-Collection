@@ -9,6 +9,7 @@ import { SignUp } from '../Components/SignUp';
 import { SignIn } from '../Components/SignIn';
 import { BlogPage } from '../Components/BlogPage';
 import Input from '../Components/Input';
+import BareLayout from './BareLayout/BareLayout';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -22,6 +23,7 @@ function Sidebar() {
         { menuName: 'Signin', route: '/signin' },
         { menuName: 'Blog Page', route: '/blog-page' },
         { menuName: 'Input', route: '/input' },
+        { menuName: 'Bare Layout', route: '/bare-layout' },
     ]
 
     const navigateToComponent = (data) => {
@@ -54,6 +56,7 @@ function Sidebar() {
                     <Route path='/signin' element={<SignIn />}></Route>
                     <Route path='/blog-page' element={<BlogPage />}></Route>
                     <Route path='/input' element={<Input />}></Route>
+                    <Route path='/bare-layout' element={<BareLayout />}></Route>
                 </Routes>
             </div>
             {/* COMPONENT VIEW SECTION END */}

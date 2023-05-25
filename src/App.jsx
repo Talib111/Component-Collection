@@ -5,15 +5,17 @@ import './App.css'
 import Blog from './Pages/Blog'
 import Sidebar from './Pages/Sidebar'
 import { BrowserRouter } from 'react-router-dom'
+import BareLayout from './Pages/BareLayout/BareLayout'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      {/* <Blog /> */}
       <BrowserRouter>
         <Sidebar />
+        {/* <BareLayout/> */}
+
       </BrowserRouter>
     </>
   )
