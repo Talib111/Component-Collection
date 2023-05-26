@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { BarChart, Wallet, Newspaper, BellRing, Paperclip, Brush, Wrench } from 'lucide-react'
 import Button from '../Components/Button'
-import ReactDOMServer from 'react-dom/server';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Avatar from '../Components/Avatar';
 import Card from '../Components/Card';
@@ -10,20 +9,43 @@ import { SignIn } from '../Components/SignIn';
 import { BlogPage } from '../Components/BlogPage';
 import Input from '../Components/Input';
 import BareLayout from './BareLayout/BareLayout';
+import Demo from '../Delete/Demo';
+import CollapseMenu from './Core/CollapseMenu';
+import { FcFlowChart } from 'react-icons/fc'
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
     const navigate = useNavigate()
 
-    const navList = [
-        { menuName: 'Button', route: '/button' },
-        { menuName: 'Avatar', route: '/avatar' },
-        { menuName: 'Card', route: '/card' },
-        { menuName: 'Signup', route: '/signup' },
-        { menuName: 'Signin', route: '/signin' },
-        { menuName: 'Blog Page', route: '/blog-page' },
-        { menuName: 'Input', route: '/input' },
-        { menuName: 'Bare Layout', route: '/bare-layout' },
+    // const navList = [
+    //     { menuName: 'Button', route: '/button' },
+    //     { menuName: 'Avatar', route: '/avatar' },
+    //     { menuName: 'Card', route: '/card' },
+    //     { menuName: 'Signup', route: '/signup' },
+    //     { menuName: 'Signin', route: '/signin' },
+    //     { menuName: 'Blog Page', route: '/blog-page' },
+    //     { menuName: 'Input', route: '/input' },
+    //     { menuName: 'Bare Layout', route: '/bare-layout' },
+    // ]
+    const menuList = [
+        {
+            icon: <BarChart size={14} />, menuName: 'Views', path: null, subMenuStatus: true, subMenu: [
+                { menuName: 'Button', path: '/button', subMenu: [] },
+                { menuName: 'Avatar', path: '/avatar', subMenu: [] },
+                { menuName: 'Card', path: '/card', subMenu: [] },
+                { menuName: 'Signup', path: '/signup', subMenu: [] },
+                { menuName: 'Signin', path: '/signin', subMenu: [] },
+                { menuName: 'Blog Page', path: '/blog-page', subMenu: [] },
+                { menuName: 'Input', path: '/input', subMenu: [] },
+                { menuName: 'Bare Layout', path: '/bare-layout', subMenu: [] },
+            ]
+        },
+        {
+            icon: <BarChart size={14} />, menuName: 'Layout', path: null, subMenuStatus: true, subMenu: [
+                { menuName: 'Bare Layout', path: '/bare-layout', subMenu: [] },
+                { menuName: 'Bare Layout', path: '/bare-layout', subMenu: [] }
+            ]
+        },
     ]
 
     const navigateToComponent = (data) => {
@@ -57,6 +79,7 @@ function Sidebar() {
                     <Route path='/blog-page' element={<BlogPage />}></Route>
                     <Route path='/input' element={<Input />}></Route>
                     <Route path='/bare-layout' element={<BareLayout />}></Route>
+                    <Route path='/test/:id' element={<Demo />}></Route>
                 </Routes>
             </div>
             {/* COMPONENT VIEW SECTION END */}
@@ -79,8 +102,13 @@ function Sidebar() {
                 <div className="mt-6 flex flex-1 flex-col justify-between">
                     <nav className="-mx-3 space-y-6 ">
                         <div className="space-y-3 ">
-
                             {
+                                menuList?.map((data, index) => (
+                                    <CollapseMenu key={`sidebar_menu${index}`} title={data.menuName} path={data?.path} subMenu={data?.subMenu} subMenuStatus={data?.subMenu?.length != 0 ? true : false} icon={<FcFlowChart size={14} />} />
+                                ))
+                            }
+
+                            {/* {
                                 navList?.map((data, index) => (
                                     <span onClick={() => navigateToComponent(data)}
                                         className="flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 cursor-pointer"
@@ -90,7 +118,8 @@ function Sidebar() {
                                         <span className="mx-2 text-sm font-medium">{data?.menuName}</span>
                                     </span>
                                 ))
-                            }
+
+                            } */}
 
                         </div>
                         {/* <div className="space-y-3 ">
