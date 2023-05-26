@@ -12,6 +12,8 @@ import BareLayout from './BareLayout/BareLayout';
 import Demo from '../Delete/Demo';
 import CollapseMenu from './Core/CollapseMenu';
 import { FcFlowChart } from 'react-icons/fc'
+import AxiosInterceptors from '../Functions/AxiosInterceptors';
+import PowerupFunctions from '../Functions/PowerupFunctions';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -19,21 +21,30 @@ function Sidebar() {
 
     const menuList = [
         {
-            icon: <BarChart size={14} />, menuName: 'Views', path: null, subMenuStatus: true, subMenu: [
+            icon: <BarChart size={14} />, menuName: 'Components', path: null, subMenuStatus: true, subMenu: [
                 { menuName: 'Button', path: '/button', subMenu: [] },
                 { menuName: 'Avatar', path: '/avatar', subMenu: [] },
                 { menuName: 'Card', path: '/card', subMenu: [] },
                 { menuName: 'Signup', path: '/signup', subMenu: [] },
                 { menuName: 'Signin', path: '/signin', subMenu: [] },
-                { menuName: 'Blog Page', path: '/blog-page', subMenu: [] },
                 { menuName: 'Input', path: '/input', subMenu: [] },
                 { menuName: 'Bare Layout', path: '/bare-layout', subMenu: [] },
             ]
         },
         {
+            icon: <BarChart size={14} />, menuName: 'Pages', path: null, subMenuStatus: true, subMenu: [
+                { menuName: 'Blog Page', path: '/blog-page', subMenu: [] },
+            ]
+        },
+        {
             icon: <BarChart size={14} />, menuName: 'Layout', path: null, subMenuStatus: true, subMenu: [
                 { menuName: 'Bare Layout', path: '/bare-layout', subMenu: [] },
-                { menuName: 'Bare Layout', path: '/bare-layout', subMenu: [] }
+            ]
+        },
+        {
+            icon: <BarChart size={14} />, menuName: 'Functions', path: null, subMenuStatus: true, subMenu: [
+                { menuName: 'Axio Interceptors', path: '/axiosinterceptors', subMenu: [] },
+                { menuName: 'PowerUps', path: '/powerups', subMenu: [] },
             ]
         },
     ]
@@ -60,16 +71,29 @@ function Sidebar() {
             {/* COMPONENT VIEW SECTION */}
             <div className="p-4 sm:ml-64">
                 <Routes>
+
+                    {/* 1 DUMMY */}
+                    <Route path='/test/:id' element={<Demo />}></Route>
+
+                    {/* 2 COMPONENTS */}
                     <Route path='/' element={<Card />} />
                     <Route path='/button' element={<Button />}></Route>
                     <Route path='/avatar' element={<Avatar />}></Route>
                     <Route path='/card' element={<Card />}></Route>
                     <Route path='/signup' element={<SignUp />}></Route>
                     <Route path='/signin' element={<SignIn />}></Route>
-                    <Route path='/blog-page' element={<BlogPage />}></Route>
                     <Route path='/input' element={<Input />}></Route>
+
+                    {/* 3 PAGES */}
+                    <Route path='/blog-page' element={<BlogPage />}></Route>
+
+                    {/* 4 BARE LAYOUTS */}
                     <Route path='/bare-layout' element={<BareLayout />}></Route>
-                    <Route path='/test/:id' element={<Demo />}></Route>
+
+                    {/* 5 FUNCTIONS */}
+                    <Route path='/axiosinterceptors' element={<AxiosInterceptors />}></Route>
+                    <Route path='/powerups' element={<PowerupFunctions />}></Route>
+
                 </Routes>
             </div>
             {/* COMPONENT VIEW SECTION END */}
