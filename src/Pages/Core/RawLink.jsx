@@ -7,6 +7,7 @@ function RawLink(props) {
   const location = useLocation()
 
   const activateLink = (menuId) => {
+    props?.setshowSidebar()
     if (location.pathname === props.path) {
       window.location.reload()
       return

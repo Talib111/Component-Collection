@@ -17,16 +17,6 @@ function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
     const navigate = useNavigate()
 
-    // const navList = [
-    //     { menuName: 'Button', route: '/button' },
-    //     { menuName: 'Avatar', route: '/avatar' },
-    //     { menuName: 'Card', route: '/card' },
-    //     { menuName: 'Signup', route: '/signup' },
-    //     { menuName: 'Signin', route: '/signin' },
-    //     { menuName: 'Blog Page', route: '/blog-page' },
-    //     { menuName: 'Input', route: '/input' },
-    //     { menuName: 'Bare Layout', route: '/bare-layout' },
-    // ]
     const menuList = [
         {
             icon: <BarChart size={14} />, menuName: 'Views', path: null, subMenuStatus: true, subMenu: [
@@ -104,7 +94,7 @@ function Sidebar() {
                         <div className="space-y-3 ">
                             {
                                 menuList?.map((data, index) => (
-                                    <CollapseMenu key={`sidebar_menu${index}`} title={data.menuName} path={data?.path} subMenu={data?.subMenu} subMenuStatus={data?.subMenu?.length != 0 ? true : false} icon={<FcFlowChart size={14} />} />
+                                    <CollapseMenu setshowSidebar={setshowSidebar} key={`sidebar_menu${index}`} title={data.menuName} path={data?.path} subMenu={data?.subMenu} subMenuStatus={data?.subMenu?.length != 0 ? true : false} icon={<FcFlowChart size={14} />} />
                                 ))
                             }
 

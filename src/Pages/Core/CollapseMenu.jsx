@@ -25,7 +25,7 @@ function CollapseMenu(props) {
                         <RiMacbookLine />
                     </div>
                     <div className="flex-initial w-40">
-                        <RawLink subMenuStatus={props.subMenuStatus} path={props.path} title={props.title} />
+                        <RawLink setshowSidebar={props?.setshowSidebar} subMenuStatus={props.subMenuStatus} path={props.path} title={props.title} />
                     </div>
 
                 </li>}
@@ -57,7 +57,7 @@ function CollapseMenu(props) {
                                         <FaEnvelope size={14} />
                                     </div> */}
                                     <div className="flex-initial w-40">
-                                        <RawLink path={subMenu.path} title={subMenu.menuName} menuId={subMenu?.id} />
+                                        <RawLink setshowSidebar={props?.setshowSidebar} path={subMenu.path} title={subMenu.menuName} menuId={subMenu?.id} />
                                     </div>
                                 </div>
                             ))

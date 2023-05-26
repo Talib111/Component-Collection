@@ -5,18 +5,28 @@ import './App.css'
 import Blog from './Pages/Blog'
 import Sidebar from './Pages/Sidebar'
 import { BrowserRouter } from 'react-router-dom'
-import BareLayout from './Pages/BareLayout/BareLayout'
+import { contextVar } from "./Components/Context/Context";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showCodeButton, setshowCodeButton] = useState(true)
+
+  //context Data to active toast from anywhere
+  const contextData = {
+    showCodeButton,
+    setshowCodeButton,
+  };
 
   return (
     <>
-      <BrowserRouter>
-        <Sidebar />
-        {/* <BareLayout/> */}
+      <contextVar.Provider value={contextData}>
+        <div onDoubleClick={() => setshowCodeButton(!showCodeButton)}>
+          <BrowserRouter>
+            <Sidebar />
+            {/* <BareLayout/> */}
 
-      </BrowserRouter>
+          </BrowserRouter>
+        </div>
+      </contextVar.Provider>
     </>
   )
 }

@@ -39,51 +39,6 @@ function Input() {
 
     return (
         <>
-            <form onSubmit={formik.handleSubmit} onChange={handleChange}>
-                <div className="form-group w-60 mb-6 md:px-4">
-                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Mobile No.<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
-                    <input   {...formik.getFieldProps('mobileNo')} type="text" className={`cypress_mobileNo form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md `}
-                        placeholder="Enter mobile no." />
-                    <span className="text-red-600 absolute text-xs">{formik.touched.mobileNo && formik.errors.mobileNo ? formik.errors.mobileNo : null}</span>
-                </div>
-            </form>
-
-            {/* CODE VIEW */}
-            <CodeView code={`import { useFormik } from 'formik'
-import * as yup from 'yup'
-
-let validationSchema = yup.object({
-                mobileNo: yup.string().required('Enter khat no.'),
-            })
-        
-            const formik = useFormik({
-                initialValues: {
-                    mobileNo: '',
-                },
-                onSubmit: (values, resetForm) => {
-                }
-                , validationSchema
-            })
-         const handleChange = (e) => {
-                let name = e.target.name
-                let value = e.target.value
-        
-                { name == 'mobileNo' && formik.setFieldValue("mobileNo", allowNumberInput(value, formik.values.mobileNo, 10)) }
-            }
-            
-            
-            <form onSubmit={formik.handleSubmit} onChange={handleChange}>
-                <div className="form-group w-60 mb-6 md:px-4">
-                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Mobile No.<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
-                    <input   {...formik.getFieldProps('mobileNo')} type="text" className={'cypress_mobileNo form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md '}
-                        placeholder="Enter mobile no." />
-                    <span className="text-red-600 absolute text-xs">{formik.touched.mobileNo && formik.errors.mobileNo ? formik.errors.mobileNo : null}</span>
-                </div>
-            </form>`} />
-
-
-            <div className='text-xl font-semibold mt-10'># Powerups</div>
-            {/* CODE VIEW */}
             <CodeView code={`export const returnCapitalize = (currentValue) => {
     let capitalizeValue = currentValue.toUpperCase()
     return capitalizeValue
@@ -234,6 +189,53 @@ export const nullToZero = (value) => {
     }
 
 }`} />
+
+            <form onSubmit={formik.handleSubmit} onChange={handleChange}>
+                <div className="form-group w-60 mb-6 md:px-4">
+                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Mobile No.<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
+                    <input   {...formik.getFieldProps('mobileNo')} type="text" className={`cypress_mobileNo form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md `}
+                        placeholder="Enter mobile no." />
+                    <span className="text-red-600 absolute text-xs">{formik.touched.mobileNo && formik.errors.mobileNo ? formik.errors.mobileNo : null}</span>
+                </div>
+            </form>
+
+            {/* CODE VIEW */}
+            <CodeView code={`import { useFormik } from 'formik'
+import * as yup from 'yup'
+
+let validationSchema = yup.object({
+                mobileNo: yup.string().required('Enter khat no.'),
+            })
+        
+            const formik = useFormik({
+                initialValues: {
+                    mobileNo: '',
+                },
+                onSubmit: (values, resetForm) => {
+                }
+                , validationSchema
+            })
+         const handleChange = (e) => {
+                let name = e.target.name
+                let value = e.target.value
+        
+                { name == 'mobileNo' && formik.setFieldValue("mobileNo", allowNumberInput(value, formik.values.mobileNo, 10)) }
+            }
+            
+            
+            <form onSubmit={formik.handleSubmit} onChange={handleChange}>
+                <div className="form-group w-60 mb-6 md:px-4">
+                    <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Mobile No.<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
+                    <input   {...formik.getFieldProps('mobileNo')} type="text" className={'cypress_mobileNo form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md '}
+                        placeholder="Enter mobile no." />
+                    <span className="text-red-600 absolute text-xs">{formik.touched.mobileNo && formik.errors.mobileNo ? formik.errors.mobileNo : null}</span>
+                </div>
+            </form>`} />
+
+
+            <div className='text-xl font-semibold mt-10'># Powerups</div>
+            {/* CODE VIEW */}
+
         </>
     )
 }
