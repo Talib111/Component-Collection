@@ -14,6 +14,10 @@ import CollapseMenu from './Core/CollapseMenu';
 import { FcFlowChart } from 'react-icons/fc'
 import AxiosInterceptors from '../Functions/AxiosInterceptors';
 import PowerupFunctions from '../Functions/PowerupFunctions';
+import Technologies from '../MetaData/Technologies';
+import Resources from '../MetaData/Resources';
+import Libraries from '../MetaData/Libraries';
+import Essentials from '../MetaData/Essentials';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -45,6 +49,14 @@ function Sidebar() {
             icon: <BarChart size={14} />, menuName: 'Functions', path: null, subMenuStatus: true, subMenu: [
                 { menuName: 'Axio Interceptors', path: '/axiosinterceptors', subMenu: [] },
                 { menuName: 'PowerUps', path: '/powerups', subMenu: [] },
+            ]
+        },
+        {
+            icon: <BarChart size={14} />, menuName: 'Meta Data', path: null, subMenuStatus: true, subMenu: [
+                { menuName: 'Technologies', path: '/technologies', subMenu: [] },
+                { menuName: 'Resources', path: '/resources', subMenu: [] },
+                { menuName: 'Libraries', path: '/libraries', subMenu: [] },
+                { menuName: 'Essentials', path: '/essentials', subMenu: [] },
             ]
         },
     ]
@@ -93,6 +105,12 @@ function Sidebar() {
                     {/* 5 FUNCTIONS */}
                     <Route path='/axiosinterceptors' element={<AxiosInterceptors />}></Route>
                     <Route path='/powerups' element={<PowerupFunctions />}></Route>
+
+                    {/* 5 TECHNOLOGIES */}
+                    <Route path='/technologies' element={<Technologies />}></Route>
+                    <Route path='/resources' element={<Resources />}></Route>
+                    <Route path='/libraries' element={<Libraries />}></Route>
+                    <Route path='/essentials' element={<Essentials />}></Route>
 
                 </Routes>
             </div>
