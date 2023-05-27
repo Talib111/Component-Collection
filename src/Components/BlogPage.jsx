@@ -128,8 +128,9 @@ export function BlogPage() {
 
   return (
     <>
-    {/* CODE VIEW */}
-    <CodeView code={`'use client'
+      {/* CODE VIEW */}
+      <CodeView code={`//Source - Dev UI
+    'use client'
 
 import React from 'react'
 import { Menu, X } from 'lucide-react'
