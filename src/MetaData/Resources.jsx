@@ -6,6 +6,7 @@ function Resources() {
     const [tooltipData, settooltipData] = useState(null)
     const resourceList = [
         { icon: null, techName: 'Flaticons', use: 'Collection of png icons', version: 1.0, url: 'https://www.flaticon.com/' },
+        { icon: null, techName: 'Lotte Animations', use: 'Pre made animations', version: 1.0, url: 'https://lottiefiles.com/' },
     ]
 
     const redirectUrl = (url) => {

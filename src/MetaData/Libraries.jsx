@@ -5,8 +5,13 @@ import ToolTip from '../Components/Common/ToolTip';
 function Libraries() {
     const [tooltipData, settooltipData] = useState(null)
     const resourceList = [
+        { icon: null, techName: 'React Router Dom', use: 'To handle page routing', version: 1.0, url: 'https://reactrouter.com/en/main' },
         { icon: null, techName: 'Formik', use: 'This library is use to handle forms in a very smart way', version: 1.0, url: 'https://formik.org/' },
         { icon: null, techName: 'Axios', use: 'This library is use to handle API calls', version: 1.0, url: 'https://axios-http.com/docs/intro' },
+        { icon: null, techName: 'React-Icons', use: 'Icon library, Easy to use', version: 1.0, url: 'https://react-icons.github.io/react-icons/' },
+        { icon: null, techName: 'React-Modal', use: 'Popup libary', version: 1.0, url: 'https://github.com/reactjs/react-modal' },
+        { icon: null, techName: 'React-Toastify', use: 'Toast libary', version: 1.0, url: 'https://www.npmjs.com/package/react-toastify' },
+        { icon: null, techName: 'Yup', use: 'Libary for validation schema, best works with formik', version: 1.0, url: 'https://www.npmjs.com/package/yup' },
     ]
 
     const redirectUrl = (url) => {

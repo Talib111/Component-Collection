@@ -18,6 +18,11 @@ import Technologies from '../MetaData/Technologies';
 import Resources from '../MetaData/Resources';
 import Libraries from '../MetaData/Libraries';
 import Essentials from '../MetaData/Essentials';
+import { AboutUsPage } from './AboutUsPage';
+import { Error404Page } from './Error404Page';
+import { LandingPage } from './LandingPage';
+import { PricingPage } from './PricingPage';
+import { ContactUs } from './ContactUs';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -38,6 +43,11 @@ function Sidebar() {
         {
             icon: <BarChart size={14} />, menuName: 'Pages', path: null, subMenuStatus: true, subMenu: [
                 { menuName: 'Blog Page', path: '/blog-page', subMenu: [] },
+                { menuName: 'AboutUs Page', path: '/aboutus-page', subMenu: [] },
+                { menuName: '404 Page', path: '/error404-page', subMenu: [] },
+                { menuName: 'Landing Page', path: '/landing-page', subMenu: [] },
+                { menuName: 'Pricing Page', path: '/pricing-page', subMenu: [] },
+                { menuName: 'Contact Page', path: '/contact-page', subMenu: [] },
             ]
         },
         {
@@ -98,6 +108,11 @@ function Sidebar() {
 
                     {/* 3 PAGES */}
                     <Route path='/blog-page' element={<BlogPage />}></Route>
+                    <Route path='/aboutus-page' element={<AboutUsPage />}></Route>
+                    <Route path='/error404-page' element={<Error404Page />}></Route>
+                    <Route path='/landing-page' element={<LandingPage />}></Route>
+                    <Route path='/pricing-page' element={<PricingPage />}></Route>
+                    <Route path='/contact-page' element={<ContactUs />}></Route>
 
                     {/* 4 BARE LAYOUTS */}
                     <Route path='/bare-layout' element={<BareLayout />}></Route>
