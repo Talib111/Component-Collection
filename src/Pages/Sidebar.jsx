@@ -23,6 +23,7 @@ import { Error404Page } from './Error404Page';
 import { LandingPage } from './LandingPage';
 import { PricingPage } from './PricingPage';
 import { ContactUs } from './ContactUs';
+import { TablePage } from './TablePage';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -48,6 +49,7 @@ function Sidebar() {
                 { menuName: 'Landing Page', path: '/landing-page', subMenu: [] },
                 { menuName: 'Pricing Page', path: '/pricing-page', subMenu: [] },
                 { menuName: 'Contact Page', path: '/contact-page', subMenu: [] },
+                { menuName: 'Table Page', path: '/table-page', subMenu: [] },
             ]
         },
         {
@@ -113,6 +115,7 @@ function Sidebar() {
                     <Route path='/landing-page' element={<LandingPage />}></Route>
                     <Route path='/pricing-page' element={<PricingPage />}></Route>
                     <Route path='/contact-page' element={<ContactUs />}></Route>
+                    <Route path='/table-page' element={<TablePage />}></Route>
 
                     {/* 4 BARE LAYOUTS */}
                     <Route path='/bare-layout' element={<BareLayout />}></Route>
