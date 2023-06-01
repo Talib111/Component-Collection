@@ -25,6 +25,7 @@ import { PricingPage } from './PricingPage';
 import { ContactUs } from './ContactUs';
 import { TablePage } from './TablePage';
 import ScrollHandleCss from '../Functions/ScrollHandleCss';
+import Chat from '../Components/Chat';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -39,7 +40,7 @@ function Sidebar() {
                 { menuName: 'Signup', path: '/signup', subMenu: [] },
                 { menuName: 'Signin', path: '/signin', subMenu: [] },
                 { menuName: 'Input', path: '/input', subMenu: [] },
-                { menuName: 'Bare Layout', path: '/bare-layout', subMenu: [] },
+                { menuName: 'Chat', path: '/chat', subMenu: [] },
             ]
         },
         {
@@ -95,7 +96,7 @@ function Sidebar() {
             </div>
 
             {/* COMPONENT VIEW SECTION */}
-            <div className="p-4 sm:ml-64">
+            <div className="p-4 sm:ml-64 h-screen overflow-x-hidden overflow-y-auto">
                 <Routes>
 
                     {/* 1 DUMMY */}
@@ -109,6 +110,7 @@ function Sidebar() {
                     <Route path='/signup' element={<SignUp />}></Route>
                     <Route path='/signin' element={<SignIn />}></Route>
                     <Route path='/input' element={<Input />}></Route>
+                    <Route path='/chat' element={<Chat />}></Route>
 
                     {/* 3 PAGES */}
                     <Route path='/blog-page' element={<BlogPage />}></Route>
