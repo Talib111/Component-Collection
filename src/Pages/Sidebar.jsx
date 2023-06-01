@@ -24,6 +24,7 @@ import { LandingPage } from './LandingPage';
 import { PricingPage } from './PricingPage';
 import { ContactUs } from './ContactUs';
 import { TablePage } from './TablePage';
+import ScrollHandleCss from '../Functions/ScrollHandleCss';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -61,6 +62,7 @@ function Sidebar() {
             icon: <BarChart size={14} />, menuName: 'Functions', path: null, subMenuStatus: true, subMenu: [
                 { menuName: 'Axio Interceptors', path: '/axiosinterceptors', subMenu: [] },
                 { menuName: 'PowerUps', path: '/powerups', subMenu: [] },
+                { menuName: 'ScrollHandle', path: '/scroll-handle', subMenu: [] },
             ]
         },
         {
@@ -123,6 +125,7 @@ function Sidebar() {
                     {/* 5 FUNCTIONS */}
                     <Route path='/axiosinterceptors' element={<AxiosInterceptors />}></Route>
                     <Route path='/powerups' element={<PowerupFunctions />}></Route>
+                    <Route path='/scroll-handle' element={<ScrollHandleCss />}></Route>
 
                     {/* 5 TECHNOLOGIES */}
                     <Route path='/technologies' element={<Technologies />}></Route>
