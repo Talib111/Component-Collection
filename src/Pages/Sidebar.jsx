@@ -26,6 +26,7 @@ import { ContactUs } from './ContactUs';
 import { TablePage } from './TablePage';
 import ScrollHandleCss from '../Functions/ScrollHandleCss';
 import Chat from '../Components/Chat';
+import AdminLayout from '../Delete/AdminLayout';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -72,6 +73,11 @@ function Sidebar() {
                 { menuName: 'Resources', path: '/resources', subMenu: [] },
                 { menuName: 'Libraries', path: '/libraries', subMenu: [] },
                 { menuName: 'Essentials', path: '/essentials', subMenu: [] },
+            ]
+        },
+        {
+            icon: <BarChart size={14} />, menuName: 'Delete', path: null, subMenuStatus: true, subMenu: [
+                { menuName: 'Admin Layout', path: '/admin-layout', subMenu: [] },
             ]
         },
     ]
@@ -134,6 +140,9 @@ function Sidebar() {
                     <Route path='/resources' element={<Resources />}></Route>
                     <Route path='/libraries' element={<Libraries />}></Route>
                     <Route path='/essentials' element={<Essentials />}></Route>
+
+                    {/* 5 DELETE */}
+                    <Route path='/admin-layout' element={<AdminLayout />}></Route>
 
                 </Routes>
             </div>
