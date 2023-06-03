@@ -27,6 +27,8 @@ import { TablePage } from './TablePage';
 import ScrollHandleCss from '../Functions/ScrollHandleCss';
 import Chat from '../Components/Chat';
 import AdminLayout from '../Delete/AdminLayout';
+import Ds from '../Delete/Ds';
+import FormGenerator from '../Delete/FormGenerator/FormGenerator';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -78,6 +80,7 @@ function Sidebar() {
         {
             icon: <BarChart size={14} />, menuName: 'Delete', path: null, subMenuStatus: true, subMenu: [
                 { menuName: 'Admin Layout', path: '/admin-layout', subMenu: [] },
+                { menuName: 'Form Generator', path: '/form-generator', subMenu: [] },
             ]
         },
     ]
@@ -143,6 +146,8 @@ function Sidebar() {
 
                     {/* 5 DELETE */}
                     <Route path='/admin-layout' element={<AdminLayout />}></Route>
+                    <Route path='/ds' element={<Ds />}></Route>
+                    <Route path='/form-generator' element={<FormGenerator />}></Route>
 
                 </Routes>
             </div>
