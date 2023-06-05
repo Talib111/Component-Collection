@@ -29,6 +29,8 @@ import Chat from '../Components/Chat';
 import AdminLayout from '../Delete/AdminLayout';
 import Ds from '../Delete/Ds';
 import FormGenerator from '../Delete/FormGenerator/FormGenerator';
+import DynamicForm from '../Delete/FormGenerator/DynamicForm';
+import AbsolutePath from '../Functions/AbsolutePath';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -67,6 +69,7 @@ function Sidebar() {
                 { menuName: 'Axio Interceptors', path: '/axiosinterceptors', subMenu: [] },
                 { menuName: 'PowerUps', path: '/powerups', subMenu: [] },
                 { menuName: 'ScrollHandle', path: '/scroll-handle', subMenu: [] },
+                { menuName: 'Vite-Config', path: '/vite-config', subMenu: [] },
             ]
         },
         {
@@ -137,6 +140,7 @@ function Sidebar() {
                     <Route path='/axiosinterceptors' element={<AxiosInterceptors />}></Route>
                     <Route path='/powerups' element={<PowerupFunctions />}></Route>
                     <Route path='/scroll-handle' element={<ScrollHandleCss />}></Route>
+                    <Route path='/vite-config' element={<AbsolutePath />}></Route>
 
                     {/* 5 TECHNOLOGIES */}
                     <Route path='/technologies' element={<Technologies />}></Route>
@@ -147,6 +151,7 @@ function Sidebar() {
                     {/* 5 DELETE */}
                     <Route path='/admin-layout' element={<AdminLayout />}></Route>
                     <Route path='/ds' element={<Ds />}></Route>
+                    <Route path='/df' element={<DynamicForm />}></Route>
                     <Route path='/form-generator' element={<FormGenerator />}></Route>
 
                 </Routes>
