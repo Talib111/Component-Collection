@@ -1,19 +1,19 @@
-export default function inputRules(id, type, name) {
+export default function inputRules(id, key, name) {
 
     const inputJson = {
         // 1 TEXT INPUT
         TEXT: `<div className="form-group col-span-12 md:col-span-2 mb-6 md:px-4">
     <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">${name}<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
-    <input {...formik.getFieldProps('${name}')} type="text" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
+    <input {...formik.getFieldProps('${key}')} type="text" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
          />
-    <span className="text-red-600 absolute text-xs">{formik.touched.${name} && formik.errors.${name} ? formik.errors.${name} : null}</span>
+    <span className="text-red-600 absolute text-xs">{formik.touched.${key} && formik.errors.${key} ? formik.errors.${key} : null}</span>
 </div>`,
         // 2 EMAIL INPUT
         EMAIL: `<div className="form-group col-span-12 md:col-span-2 mb-6 md:px-4">
     <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">${name}<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
-    <input {...formik.getFieldProps('${name}')} type="email" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
+    <input {...formik.getFieldProps('${key}')} type="email" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
          />
-    <span className="text-red-600 absolute text-xs">{formik.touched.${name} && formik.errors.${name} ? formik.errors.${name} : null}</span>
+    <span className="text-red-600 absolute text-xs">{formik.touched.${key} && formik.errors.${key} ? formik.errors.${key} : null}</span>
 </div>`
         ,
 
@@ -21,25 +21,25 @@ export default function inputRules(id, type, name) {
         DESCRIPTION: `<div className="form-group col-span-12 grid grid-cols-12">
         <div className='col-span-12 md:col-span-6 mb-6 md:px-4'>
             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">${name}<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
-            <textarea {...formik.getFieldProps('${name}')} class="h-40 resize form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"></textarea>
-            <span className="text-red-600 absolute text-xs">{formik.touched.${name} && formik.errors.${name} ? formik.errors.${name} : null}</span>
+            <textarea {...formik.getFieldProps('${key}')} class="h-40 resize form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md"></textarea>
+            <span className="text-red-600 absolute text-xs">{formik.touched.${key} && formik.errors.${key} ? formik.errors.${key} : null}</span>
         </div>
     </div>`
         ,
         // 4 PASSWORD INPUT - (done)
         PASSWORD: `<div className="form-group col-span-12 md:col-span-2 mb-6 md:px-4">
     <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">${name}<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
-    <input {...formik.getFieldProps('${name}')} type="password" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
+    <input {...formik.getFieldProps('${key}')} type="password" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
          />
-    <span className="text-red-600 absolute text-xs">{formik.touched.${name} && formik.errors.${name} ? formik.errors.${name} : null}</span>
+    <span className="text-red-600 absolute text-xs">{formik.touched.${key} && formik.errors.${key} ? formik.errors.${key} : null}</span>
 </div>`
         ,
         // 5 NUMBER INPUT
         NUMBER: `<div className="form-group col-span-12 md:col-span-2 mb-6 md:px-4">
     <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">${name}<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
-    <input {...formik.getFieldProps('${name}')} type="text" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
+    <input {...formik.getFieldProps('${key}')} type="text" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
          />
-    <span className="text-red-600 absolute text-xs">{formik.touched.${name} && formik.errors.${name} ? formik.errors.${name} : null}</span>
+    <span className="text-red-600 absolute text-xs">{formik.touched.${key} && formik.errors.${key} ? formik.errors.${key} : null}</span>
 </div>`
         ,
         // 6 LIST INPUT - (done)
@@ -56,9 +56,9 @@ export default function inputRules(id, type, name) {
         // 7 DATE INPUT - (done)
         DATE: `<div className="form-group col-span-12 md:col-span-2 mb-6 md:px-4">
     <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">${name}<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
-    <input {...formik.getFieldProps('${name}')} type="date" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
+    <input {...formik.getFieldProps('${key}')} type="date" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
          />
-    <span className="text-red-600 absolute text-xs">{formik.touched.${name} && formik.errors.${name} ? formik.errors.${name} : null}</span>
+    <span className="text-red-600 absolute text-xs">{formik.touched.${key} && formik.errors.${key} ? formik.errors.${key} : null}</span>
 </div>`
         ,
         // 8 MEDIA INPUT - (done)
@@ -66,7 +66,7 @@ export default function inputRules(id, type, name) {
         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">${name}</label>
         <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" />
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
-        <span className="text-red-600 absolute text-xs">{formik.touched.${name} && formik.errors.${name} ? formik.errors.${name} : null}</span>
+        <span className="text-red-600 absolute text-xs">{formik.touched.${key} && formik.errors.${key} ? formik.errors.${key} : null}</span>
     </div>`
         ,
 
@@ -81,9 +81,9 @@ export default function inputRules(id, type, name) {
         // 10 JSON INPUT
         JSON: `<div className="form-group col-span-12 md:col-span-2 mb-6 md:px-4">
     <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">${name}<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
-    <input {...formik.getFieldProps('${name}')} type="text" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
+    <input {...formik.getFieldProps('${key}')} type="text" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
          />
-    <span className="text-red-600 absolute text-xs">{formik.touched.${name} && formik.errors.${name} ? formik.errors.${name} : null}</span>
+    <span className="text-red-600 absolute text-xs">{formik.touched.${key} && formik.errors.${key} ? formik.errors.${key} : null}</span>
 </div>`
     }
 

@@ -1,5 +1,5 @@
 import inputRules from "./inputRules"
-export default function FormEngine(inputFields) {
+export default function FormEngine(inputFields, formName) {
 
     console.log('inside form engine.....', inputFields)
     // return
@@ -8,7 +8,7 @@ export default function FormEngine(inputFields) {
     let validationSchema = ''
     inputFields.forEach((value, key) => {
         validationSchema = `${validationSchema}
-         ${value.name}: yup.string(),`
+         ${value.key}: yup.string(),`
     })
 
 
@@ -17,28 +17,47 @@ export default function FormEngine(inputFields) {
     let initialValues = ''
     inputFields.forEach((value, key) => {
         initialValues = `${initialValues}
-        ${value.name}: '',`
+        ${value.key}: '',`
     })
 
     // 3 INPUT VIEW GENERATION
     let inputView = ''
     inputFields.forEach((value, key) => {
         // GETTING HTML FOR SPECIFIC INPUT
-        let inputViewHtml = inputRules(value.id, value.type, value.name)
+        let inputViewHtml = inputRules(value.id, value.key, value.name)
 
         inputView = `${inputView}
        ${inputViewHtml}
        `
     })
 
+    // 4 REQUEST BODY GENERATION
+    let requestBody = ''
+    inputFields.forEach((value, key) => {
+        requestBody = `${requestBody}
+        ${value.key}: values?.${value.key},`
+    })
+
+    // 5 FEED EDIT DATA GENERATION
+    let feedData = ''
+    inputFields.forEach((value, key) => {
+        feedData = `${feedData}
+        formik.setFieldValue('${value.key}', data?.${value.key})`
+    })
+
 
     let formLayout = `
 import { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
+import { useNavigate, useParams } from 'react-router-dom'
 import * as yup from 'yup'
 
 
-function DynamicForm(props) {
+function ${formName}(props) {
+    
+    const { id } = useParams()
+    const navigate = useNavigate()
+    const [isLoading, setisLoading] = useState(false)
 
     let validationSchema = yup.object({
         ${validationSchema}
@@ -62,6 +81,77 @@ function DynamicForm(props) {
         let value = event.target.value
     };
 
+    /*// FUNCTION TO POST OR EDIT DATA
+    const saveMasterForm = (values) => {
+        setisLoading(true)
+        let url
+        let requestBody
+        let requestBodyBase = {
+            ${requestBody}
+        }
+        if (id !== undefined) {
+            url = 'apiEdit'
+            requestBody = requestBodyBase
+            requestBody.id = id
+        } else {
+            url = 'apiPost'
+            requestBody = requestBodyBase
+        }
+    
+        AxiosInterceptors.post(url, requestBody, ApiHeader())
+            .then(function (response) {
+                console.log('view fee master..', response?.data?.data)
+                if (response?.data?.status) {
+                } else {
+                }
+                setisLoading(false)
+            })
+            .catch(function (error) {
+                console.log('==2 error list...', error)
+                setisLoading(false)
+            })
+    }
+    
+    // FUNCTION TO FECTH DATA TO EDIT
+    const fetchEditData = () => {
+        setisLoading(true)
+        seterroState(false)
+        let requestBody = {
+            id: id
+        }
+        AxiosInterceptors.post('apiFetch', requestBody, ApiHeader())
+            .then(function (response) {
+                console.log('fetch edit data response..', response?.data?.data)
+                if (response?.data?.status) {
+                    feedEditData(response?.data?.data)
+                } else {
+                    activateBottomErrorCard(true, 'Error occured in submitting deactivation application. Please try again later.')
+                }
+                setisLoading(false)
+    
+            })
+            .catch(function (error) {
+                console.log('= edit data error...', error)
+                seterroState(true)
+                setisLoading(false)
+            })
+    }
+    
+    // FUNCTION TO FEED EDIT DATA
+    const feedEditData = (data) => {
+        console.log('existing property details in prop address...', data)
+       ${feedData}
+    }
+    
+    // CALLING API TO FETCH DATA IN EDIT CASE
+    useEffect(() => {
+        if (id !== undefined) {
+            fetchEditData()
+        }
+    }, [])
+    */
+
+
     return (
         <>
             <div  className="block md:p-4 w-full md:py-6 rounded-lg mx-auto  shadow-xl bg-white px-4 sm:px-0">
@@ -81,7 +171,7 @@ function DynamicForm(props) {
     )
 }
 
-export default DynamicForm`
+export default ${formName}`
 
     return formLayout
 

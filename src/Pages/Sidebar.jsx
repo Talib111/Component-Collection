@@ -29,8 +29,8 @@ import Chat from '../Components/Chat';
 import AdminLayout from '../Delete/AdminLayout';
 import Ds from '../Delete/Ds';
 import FormGenerator from '../Delete/FormGenerator/FormGenerator';
-import DynamicForm from '../Delete/FormGenerator/DynamicForm';
 import AbsolutePath from '../Functions/AbsolutePath';
+import Form1 from '../Delete/FormGenerator/Form1';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -151,7 +151,7 @@ function Sidebar() {
                     {/* 5 DELETE */}
                     <Route path='/admin-layout' element={<AdminLayout />}></Route>
                     <Route path='/ds' element={<Ds />}></Route>
-                    <Route path='/df' element={<DynamicForm />}></Route>
+                    <Route path='/df' element={<Form1 />}></Route>
                     <Route path='/form-generator' element={<FormGenerator />}></Route>
 
                 </Routes>

@@ -27,48 +27,59 @@ function ChatCard(props) {
     )
 }
 
-
-
-
 function FormGenerator() {
 
     const [inputFields, setinputFields] = useState(new Map());
     const [currentSelectedId, setcurrentSelectedId] = useState(null);
     const [currentSelectedType, setcurrentSelectedType] = useState(null);
     const [currentSelectedName, setcurrentSelectedName] = useState(null);
+    const [currentSelectedKey, setcurrentSelectedKey] = useState('');
+    const [currentFormName, setcurrentFormName] = useState('Form1');
     const [codeView, setcodeView] = useState(null);
-    // Function to update the Map
+
+    // Function to add element to the Map
     const collectInput = () => {
+        if ((currentSelectedName === '' || currentSelectedName === null) || (currentSelectedKey === '' || currentSelectedKey === null)) {
+            // alert('Fileds cannot be empty')
+            fourthModal.showModal()
+            return
+        }
         const newMap = new Map(inputFields);
-        newMap.set(currentSelectedId, { id: currentSelectedId, type: currentSelectedType, name: currentSelectedName });
+        newMap.set(currentSelectedKey, { id: currentSelectedId, type: currentSelectedType, name: currentSelectedName, key: currentSelectedKey });
         setinputFields(newMap);
         secondModal.close()
     };
 
-    console.log('selected field', inputFields)
-
+    // FUNCTION TO OPEN FIRST MODAL FOR FIELD SELECTION
     const openFirstModal = () => {
         d.showModal()
     }
+
+    // FUNCTION TO OPEN SECOND MODAL FOR FILED NAME 
     const openSecondModal = (selectedField, selectedType) => {
-        console.log('open second', selectedField)
+        setcurrentSelectedKey('')
+
         setcurrentSelectedId(selectedField)
         setcurrentSelectedType(selectedType)
+
         d.close()
         secondModal.showModal()
     }
 
+    // FUNCTION TO OPEN THIRD MODAL FOR CODE SHOW
     const openThirdModal = () => {
         thirdModal.showModal()
     }
 
+    // FUNCTION TO GENERATE FORM 
     const generateForm = () => {
-        let formLayout = FormEngine(inputFields)
+        let formLayout = FormEngine(inputFields, currentFormName)
         setcodeView(formLayout)
         console.log('generated form....', formLayout)
 
     }
 
+    // FUNCTION TO COPY CODES IN CLIPBORAD
     const copyToClipboard = () => {
         navigator.clipboard.writeText(codeView)
             .then(() => {
@@ -79,8 +90,14 @@ function FormGenerator() {
             });
     };
 
+    // FUNCTION TO REMOVE FORM FIELD
+    const removeField = (key) => {
+        const map = new Map(inputFields);
+        map.delete(key)
+        setinputFields(map)
+    }
 
-
+    // FORM FIELD LISTS
     const dataList = [
         { type: 'text', title: 'Text', id: 'TEXT', desc: 'Small or long text like title or description', icon: <div className='bg-green-50 text-green-700 text-xs font-semibold w-7 h-6 flex justify-center items-center border border-green-300 rounded-md'>Ab</div> },
         { type: 'email', title: 'Email', id: 'EMAIL', desc: 'Small or long text like title or description', icon: <div className='bg-red-50 text-red-700 text-xs font-semibold w-7 h-6 flex justify-center items-center border border-red-300 rounded-md'>@</div> },
@@ -94,16 +111,47 @@ function FormGenerator() {
         { type: 'json', title: 'Json', id: 'JSON', desc: 'Small or long text like title or description', icon: <div className='bg-blue-50 text-blue-700 text-xs font-semibold w-7 h-6 flex justify-center items-center border border-blue-300 rounded-md'>{'{...}'}</div> },
     ]
 
+    const allowCharacterNumberInput = (currentValue, oldValue, max = null) => {
+        if (currentValue.length > max)  //stop if max value and return oldvalue
+            return oldValue
+
+        const re = /^[\a-zA-Z0-9!]*$/;    //character + number 
+        if (currentValue === '' || re.test(currentValue)) //test 
+            return currentValue
+        else
+            return oldValue
+    }
+
+    // FUNCTION WHICH HANDLES FORM NAME FILED CHANGE EVENT
+    const onFormNameChange = (e) => {
+        let value = e.target.value
+        let formName = allowCharacterNumberInput(value, currentFormName, 100)
+        setcurrentFormName(formName)
+    }
+
+    // FUNCTION WHICH HANDLES FORM FIELD KEY CHANGE EVENT
+    const onKeyChange = (e) => {
+        let value = e.target.value
+        let formName = allowCharacterNumberInput(value, currentSelectedKey, 100)
+        setcurrentSelectedKey(formName)
+    }
+
     return (
         <>
 
-            <TableView data={inputFields} generateForm={generateForm} openThirdModal={openThirdModal} codeView={codeView} openFirstModal={openFirstModal} />
+            <TableView data={inputFields} generateForm={generateForm} openThirdModal={openThirdModal} codeView={codeView} openFirstModal={openFirstModal} removeField={removeField} />
 
             <div className=' h-auto w-auto fixed bottom-10 right-10' >
                 <dialog className='relative h-4/5 w-1/2 p-0' id="d">
                     <div className='sticky top-0 w-full flex bg-gray-100 p-4'>
                         <div className='flex-1 flex'> <div className='w-8 h-8 rounded-sm bg-indigo-600 text-white flex justify-center items-center'>FM</div> <span className='font-semibold ml-2'>Form Generator</span></div>
-                        <div className='flex-1 flex justify-end'>  <button onClick={() => d.close()} className='text-xl p-2 w-8 h-8 rounded-lg bg-white-50 hover:bg-red-100 hover:text-red-500 font-semibold flex justify-center items-center'>x</button></div>
+                        <div className='flex-1 flex justify-end'>
+                            <div className="form-group col-span-12 md:col-span-2 mb-6 md:px-4">
+                                <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Form Name<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
+                                <input value={currentFormName} onChange={onFormNameChange} type="text" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
+                                />
+                            </div>
+                            <button onClick={() => d.close()} className='text-xl p-2 w-8 h-8 rounded-lg bg-white-50 hover:bg-red-100 hover:text-red-500 font-semibold flex justify-center items-center'>x</button></div>
                     </div>
                     <div className='mt-10'></div>
                     <div className='grid grid-cols-12'>
@@ -123,14 +171,21 @@ function FormGenerator() {
                 <dialog className='relative h-4/5 w-1/2 p-0' id="secondModal">
                     <div className='sticky top-0 w-full flex bg-gray-100 p-4'>
                         <div className='flex-1 flex'> <div className='w-8 h-8 rounded-sm bg-indigo-600 text-white flex justify-center items-center'>FM</div> <span className='font-semibold ml-2'>{currentSelectedType}</span></div>
-                        <div className='flex-1 flex justify-end'>  <button onClick={() => secondModal.close()} className='text-xl p-2 w-8 h-8 rounded-lg bg-white-50 hover:bg-red-100 hover:text-red-500 font-semibold flex justify-center items-center'>x</button></div>
+                        <div className='flex-1 flex justify-end'>
+
+                            <button onClick={() => secondModal.close()} className='text-xl p-2 w-8 h-8 rounded-lg bg-white-50 hover:bg-red-100 hover:text-red-500 font-semibold flex justify-center items-center'>x</button></div>
                     </div>
                     <div className='mt-10'></div>
                     <div className="grid grid-cols-12">
                         <div className="form-group col-span-12 md:col-span-2 mb-6 md:px-4">
                             <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Name<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
                             <input value={currentSelectedName} onChange={(e) => setcurrentSelectedName(e.target.value)} type="text" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
-                                placeholder="Enter name" />
+                            />
+                        </div>
+                        <div className="form-group col-span-12 md:col-span-2 mb-6 md:px-4">
+                            <label className="form-label inline-block mb-1 text-gray-600 text-sm font-semibold">Key<small className="mt-1 text-sm font-semibold text-red-600 inline ">*</small></label>
+                            <input value={currentSelectedKey} onChange={onKeyChange} type="text" className={'form-control block w-full px-3 2xl:py-1.5 py-1 2xl:text-base text-sm font-normal text-gray-700  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none placeholder-gray-300 shadow-md'}
+                            />
                         </div>
                     </div>
                     <div className='p-4'>
@@ -141,6 +196,7 @@ function FormGenerator() {
                         >
                             Finish
                         </button>
+
                     </div>
                 </dialog>
 
@@ -164,6 +220,20 @@ function FormGenerator() {
 
 
                 </dialog>
+                {/* CODE VIEW DIALOG */}
+                <dialog className='relative py-3 w-1/4 p-0 bg-red-100 border border-red-600' id="fourthModal">
+                    <div className='font-semibold text-lg w-full text-center'>Fields cannot be empty</div>
+                    <button onClick={() => fourthModal.close()} className=' absolute top-0 right-0 text-xl p-2 w-8 h-8 rounded-lg bg-white-50 hover:bg-red-100 hover:text-red-500 font-semibold flex justify-center items-center'>x</button>
+
+
+
+                </dialog>
+
+                {/* FOURTH DIALOG */}
+                {/* <dialog className='relative h-1/4 w-1/4 p-0 flex justify-center items-center bg-red-100 border border-red-600' id="fourthModal">
+                    <div className='font-semibold text-lg'>Fields cannot be empty</div>
+                    <button onClick={() => fourthModal.close()} className=' absolute top-0 right-0 text-xl p-2 w-8 h-8 rounded-lg bg-white-50 hover:bg-red-100 hover:text-red-500 font-semibold flex justify-center items-center'>x</button>
+                </dialog> */}
 
                 {/* QUICK ACCESS BUTTON */}
                 {/* <button

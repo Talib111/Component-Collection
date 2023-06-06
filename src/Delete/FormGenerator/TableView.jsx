@@ -1,6 +1,7 @@
 import React from 'react'
 import { FcGallery } from 'react-icons/fc'
-
+import { TbEdit } from 'react-icons/tb'
+import { RiDeleteBack2Line } from 'react-icons/ri'
 
 export function TableView(props) {
 
@@ -34,6 +35,7 @@ export function TableView(props) {
                             <th className='px-2 py-3 border-b border-gray-200 text-gray-800  text-left capitalize'>#</th>
                             <th className='px-2 py-3 border-b border-gray-200 text-gray-800  text-left capitalize'>Name</th>
                             <th className='px-2 py-3 border-b border-gray-200 text-gray-800  text-left capitalize'>Type</th>
+                            <th className='px-2 py-3 border-b border-gray-200 text-gray-800  text-left capitalize'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +50,9 @@ export function TableView(props) {
                                     </span>
                                 </td>
                                 <td className='px-2 py-2 text-sm text-left'>{value.type}</td>
+                                <td className='px-2 py-2 text-sm text-left'>
+                                    <RiDeleteBack2Line onClick={() => props?.removeField(value.key)} className='inline ml-2 text-red-400 font-semibold text-lg cursor-pointer hover:text-red-700 relative hover:scale-150' />
+                                </td>
                             </tr>
                         ))}
                     </tbody>
