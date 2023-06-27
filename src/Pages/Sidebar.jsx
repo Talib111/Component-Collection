@@ -31,6 +31,7 @@ import Ds from '../Delete/Ds';
 import FormGenerator from '../Delete/FormGenerator/FormGenerator';
 import AbsolutePath from '../Functions/AbsolutePath';
 import Form1 from '../Delete/FormGenerator/Form1';
+import ApiPattern from '../Functions/ApiPattern';
 
 function Sidebar() {
     const [showSidebar, setshowSidebar] = useState(false)
@@ -70,6 +71,7 @@ function Sidebar() {
                 { menuName: 'PowerUps', path: '/powerups', subMenu: [] },
                 { menuName: 'ScrollHandle', path: '/scroll-handle', subMenu: [] },
                 { menuName: 'Vite-Config', path: '/vite-config', subMenu: [] },
+                { menuName: 'Api-Pattern', path: '/api-pattern', subMenu: [] },
             ]
         },
         {
@@ -141,6 +143,7 @@ function Sidebar() {
                     <Route path='/powerups' element={<PowerupFunctions />}></Route>
                     <Route path='/scroll-handle' element={<ScrollHandleCss />}></Route>
                     <Route path='/vite-config' element={<AbsolutePath />}></Route>
+                    <Route path='/api-pattern' element={<ApiPattern />}></Route>
 
                     {/* 5 TECHNOLOGIES */}
                     <Route path='/technologies' element={<Technologies />}></Route>
