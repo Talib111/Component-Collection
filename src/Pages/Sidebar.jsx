@@ -61,7 +61,7 @@ function Sidebar() {
             ]
         },
         {
-            icon: <BarChart size={14} />, menuName: 'Layout', path: null, subMenuStatus: true, subMenu: [
+            icon: <BarChart size={14} />, menuName: 'Layouts', path: null, subMenuStatus: true, subMenu: [
                 { menuName: 'Bare Layout', path: '/bare-layout', subMenu: [] },
             ]
         },
@@ -74,17 +74,18 @@ function Sidebar() {
                 { menuName: 'Api-Pattern', path: '/api-pattern', subMenu: [] },
             ]
         },
+        // ------------------- NO NEED OF THIS NOW ONLY CODE SNIPPETS WILL BE VISIBLE  -------------
+        // {
+        //     icon: <BarChart size={14} />, menuName: 'Meta Data', path: null, subMenuStatus: true, subMenu: [
+        //         { menuName: 'Technologies', path: '/technologies', subMenu: [] },
+        //         { menuName: 'Resources', path: '/resources', subMenu: [] },
+        //         { menuName: 'Libraries', path: '/libraries', subMenu: [] },
+        //         { menuName: 'Essentials', path: '/essentials', subMenu: [] },
+        //     ]
+        // },
         {
-            icon: <BarChart size={14} />, menuName: 'Meta Data', path: null, subMenuStatus: true, subMenu: [
-                { menuName: 'Technologies', path: '/technologies', subMenu: [] },
-                { menuName: 'Resources', path: '/resources', subMenu: [] },
-                { menuName: 'Libraries', path: '/libraries', subMenu: [] },
-                { menuName: 'Essentials', path: '/essentials', subMenu: [] },
-            ]
-        },
-        {
-            icon: <BarChart size={14} />, menuName: 'Delete', path: null, subMenuStatus: true, subMenu: [
-                { menuName: 'Admin Layout', path: '/admin-layout', subMenu: [] },
+            icon: <BarChart size={14} />, menuName: 'Tools', path: null, subMenuStatus: true, subMenu: [
+                // { menuName: 'Admin Layout', path: '/admin-layout', subMenu: [] },
                 { menuName: 'Form Generator', path: '/form-generator', subMenu: [] },
             ]
         },
